@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { MyContext } from "../Router/AuthProvider";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Google_github from "../Google_githup-Auth/Google_github";
 
 
 const Login = () => {
@@ -65,7 +66,7 @@ const Login = () => {
               </div>
               <div>
                 <div>
-                  
+                  <Google_github></Google_github>
                 </div >
                   <p className='text-[15px]'>Dont’t Have An Account ?<Link className='text-red text-blue-400 underline' to={'/registration'}> Registration</Link></p>
               </div>

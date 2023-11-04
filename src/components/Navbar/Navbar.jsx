@@ -1,7 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../assets/logo (4).png'
+import { useContext } from "react";
+import { MyContext } from "../Router/AuthProvider";
 
 const Navbar = () => {
+    const {user,logOut}=useContext(MyContext)
+    const loOutUser = ()=>{
+        logOut()
+    }
     return (
         <div className="navbar bg-base-100 dark:text-white sticky inset-0 z-10  rounded-none border  bg-opacity-30  text-black shadow-md backdrop-blur-2xl backdrop-saturate-200 lg:px-2 lg:py-2">
     
@@ -144,19 +150,30 @@ const Navbar = () => {
       <div className="navbar-end md:px-12">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-            
-               <img className='w-14 border border-blue-400  rounded-full' src={'https://i.ibb.co/VDMnSyz/iconlog.jpg'} alt="" />
+            {
+                user?.photoURL?<img className='w-14 border border-blue-400  rounded-full' src={user?.photoURL} alt="" />
+                :
+                <img className='w-14 border border-blue-400  rounded-full' src={'https://i.ibb.co/VDMnSyz/iconlog.jpg'} alt="" />
+            }
+           
+               
             
          
             </div>
            
-        
+            {
+                user?.displayName && <h2>{user.displayName}</h2>
+            }
         </label>
-          <Link to={'/login'}>
-          <button className='btn bg-green-700 text-white'>
-            login
-           </button> 
+        {
+            user?<button onClick={loOutUser} className="btn bg-green-700 text-white">logOut</button>
+            :<Link to={'/login'}>
+                <button className='btn bg-green-700 text-white'>
+                    login
+                </button> 
             </Link>        
+          
+        }
           
         </div>
         
