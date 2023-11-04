@@ -1,7 +1,33 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { MyContext } from "../Router/AuthProvider";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
+    const {singWithEmailAndPassword}=useContext(MyContext)
+    // const navigator = useNavigate()
+    // const singLocation = useLocation()
+    const handelLogin = (e) =>{
+     e.preventDefault()
+     const email = e.target.email.value
+     const password = e.target.password.value
+ 
+   singWithEmailAndPassword(email,password)
+ .then((res)=>{
+  
+  
+     //navigator(singLocation?.state? singLocation.state :"/")
+    return toast.success("Log In success")
+      
+ })
+ .catch((error)=>{
+  toast.error("Invalid Email And Password")
+    
+ })
+    }
+ 
     return (
         
         <>
@@ -16,7 +42,7 @@ const Login = () => {
           
           </div>
           <div className="card  border border-3 border-cyan-700 flex-shrink-0 md:w-full    shadow-2xl bg-base-100 mt-3">
-          <form >
+          <form onSubmit={handelLogin}>
           <div className="card-body">
               <div className="form-control ">
                 <label className="label">

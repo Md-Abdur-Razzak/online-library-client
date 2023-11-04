@@ -1,7 +1,44 @@
+import { updateProfile } from "firebase/auth";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { MyContext } from "../Router/AuthProvider";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Registration = () => {
+    
+const {userserRegistraton}=useContext(MyContext)
+
+
+const handelRegistration = (e) =>{
+    e.preventDefault()
+        const email = e.target.email.value
+        const password = e.target.password.value
+        const name = e.target.name.value
+        const img = e.target.img.value
+        console.log(email,password);
+        
+    if (! /^(?=.*[A-Z])(?=.*[\W_]).{6,}$/.test(password)){
+        return toast.error("Password must be at least 6 characters long and contain at least one uppercase letter and one special character  ")
+    }
+
+  
+    userserRegistraton(email,password)
+    .then((res)=>{
+      updateProfile(res.user,{
+        displayName:name,
+        photoURL:img
+      })
+      
+   
+       return toast.success("congratulations!  Registration successful ")
+      
+  })
+  .catch(()=>{
+      return toast.error("email already exists ")
+  })
+}
     return (
         <>
         
@@ -16,7 +53,7 @@ const Registration = () => {
          
       
            <div className=" card border border-3 border-cyan-700 flex-shrink-0 md:w-full w-[80%]  max-[363px]:w-[90%]  max-w-[600px] py-9 md:px-16 px-5  shadow-2xl bg-base-100 mt-3">
-           <form onSubmit={''} >
+           <form onSubmit={handelRegistration} >
       
                <div className="form-control  mt-1">
                  <label className="label">
