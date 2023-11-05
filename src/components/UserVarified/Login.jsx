@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MyContext } from "../Router/AuthProvider";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,8 +8,8 @@ import Google_github from "../Google_githup-Auth/Google_github";
 
 const Login = () => {
     const {singWithEmailAndPassword}=useContext(MyContext)
-    // const navigator = useNavigate()
-    // const singLocation = useLocation()
+    const navigator = useNavigate()
+    const singLocation = useLocation()
     const handelLogin = (e) =>{
      e.preventDefault()
      const email = e.target.email.value
@@ -19,7 +19,7 @@ const Login = () => {
  .then((res)=>{
   
   
-     //navigator(singLocation?.state? singLocation.state :"/")
+     navigator(singLocation?.state? singLocation.state :"/")
     return toast.success("Log In success")
       
  })
