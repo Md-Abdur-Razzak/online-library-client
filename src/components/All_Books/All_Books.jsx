@@ -2,15 +2,24 @@ import { useLoaderData } from "react-router-dom";
 import AllBooks_cart from "./AllBooks_cart";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Loder from "../Loder/Loder";
 
 
 const All_Books = () => {
  
     const [allBooks,setAllbooks]=useState([])
+    const [lode,setLode]=useState(true)
     useEffect(()=>{
         axios.get(`http://localhost:5000/allbooks`)
-        .then(res=>setAllbooks(res.data))
+        .then(res=>{
+            setAllbooks(res.data)
+            setLode(false)
+
+        })
 },[])
+if (lode) {
+    return <Loder></Loder>
+}
    const handelFiltering = ()=>{
         const quantityFiltering = allBooks?.filter(data=>data.quantity>0)
         setAllbooks(quantityFiltering)
