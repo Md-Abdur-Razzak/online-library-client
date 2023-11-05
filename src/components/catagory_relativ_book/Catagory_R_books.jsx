@@ -21,7 +21,7 @@ const Catagory_R_books = () => {
         <div>
            <div>
                 {
-                    separateBooks?.map(item=><Catagory_R_details item={item}></Catagory_R_details>)
+                    separateBooks?.map(item=><Catagory_R_details key={item._id} item={item}></Catagory_R_details>)
                 }
            </div>
         </div>

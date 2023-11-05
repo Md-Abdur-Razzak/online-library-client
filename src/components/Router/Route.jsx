@@ -32,7 +32,8 @@ export const myRoute = createBrowserRouter([
             },
             {
                 path:'/allbooks',
-                element:<All_Books></All_Books>
+                element:<All_Books></All_Books>,
+                loader:()=>fetch('http://localhost:5000/allbooks')
             },
             {
                 path:'/bbooks',
