@@ -8,6 +8,7 @@ import All_Books from "../All_Books/All_Books";
 import Borrowed_Books from "../Borrowed_Books/Borrowed_Books";
 import Private_Router from "./Private_Router";
 import Catagory_R_books from "../catagory_relativ_book/Catagory_R_books";
+import Book_Details from "../book_Details/Book_Details";
 
 export const myRoute = createBrowserRouter([
     {
@@ -42,6 +43,12 @@ export const myRoute = createBrowserRouter([
             {
                 path:'/samebook/:catagory',
                 element:<Catagory_R_books></Catagory_R_books>
+            },
+            {
+                path:'/details/:id',
+                element:<Book_Details></Book_Details>,
+                loader:({params})=>fetch(`http://localhost:5000/allbooks/${params.id}`)
+                
             }
         ]
     }
