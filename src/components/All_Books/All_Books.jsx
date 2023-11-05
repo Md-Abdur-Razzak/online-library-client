@@ -15,8 +15,9 @@ const All_Books = () => {
     return (
         <div className="w-[80%] mx-auto mt-[100px]">
             <div>
+                
                 <button onClick={handelFiltering} className="btn bg-green-400 text-white">
-                    filter quantity
+                available quantity books
                 </button>
             </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-9">
