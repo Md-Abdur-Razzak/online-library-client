@@ -1,11 +1,13 @@
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
+import axios from "axios";
 
 export const MyContext = createContext(null)
 const AuthProvider = ({children}) => {
     const [user,setCurrentUser]=useState(null)
     const [loder,setLoder]=useState(true)
+    const [cataogris,setCataogris]=useState([])
     const userserRegistraton = (email,password)=>{
         setLoder(true)
         return createUserWithEmailAndPassword(auth,email,password)
@@ -42,6 +44,12 @@ const AuthProvider = ({children}) => {
         const logOut = ()=>{
             return signOut(auth)
         }
+        // --------------fatching Data cataogris--------------------
+        useEffect(()=>{
+           fetch('http://localhost:5000/catagory')
+            .then(res=>res.json())
+            .then(data=>setCataogris(data))
+        },[])
 const passingData = {
     userserRegistraton,
     singWithEmailAndPassword,
@@ -49,7 +57,8 @@ const passingData = {
     loder,
     logOut,
     googleAthntocation,
-    githubAthntocation
+    githubAthntocation,
+    cataogris
 }
     return (
        <MyContext.Provider value={passingData}>
