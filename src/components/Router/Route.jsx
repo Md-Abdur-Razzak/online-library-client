@@ -7,6 +7,7 @@ import Add_Product from "../Add_product/Add_Product";
 import All_Books from "../All_Books/All_Books";
 import Borrowed_Books from "../Borrowed_Books/Borrowed_Books";
 import Private_Router from "./Private_Router";
+import Catagory_R_books from "../catagory_relativ_book/Catagory_R_books";
 
 export const myRoute = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ export const myRoute = createBrowserRouter([
             {
                 path:'/bbooks',
                 element:<Private_Router><Borrowed_Books></Borrowed_Books></Private_Router> 
+            },
+            {
+                path:'/samebook/:catagory',
+                element:<Catagory_R_books></Catagory_R_books>
             }
         ]
     }

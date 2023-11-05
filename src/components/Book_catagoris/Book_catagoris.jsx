@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import { MyContext } from "../Router/AuthProvider";
+import { Link } from "react-router-dom";
 
 
 const Book_catagoris = () => {
     const {cataogris}=useContext(MyContext)
-    console.log(cataogris);
+
     return (
         <div className="lg:w-[80%] mx-auto mt-[100px]">
           <div className="grid lg:grid-cols-4 grid-cols-1 md:grid-cols-2">
@@ -17,7 +18,9 @@ const Book_catagoris = () => {
                                 </div>
                                 <div className="flex flex-col">
                                     <h1>{data.catagory}</h1>
+                                <Link to={`/sameBook/${data.catagory}`}>
                                     <button className="btn bg-green-400 text-white">See Books</button>
+                                </Link>
                                 </div>
                             </div>
                         )
