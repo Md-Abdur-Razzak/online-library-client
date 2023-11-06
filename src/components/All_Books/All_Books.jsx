@@ -13,19 +13,19 @@ const All_Books = () => {
     const varifiEmail = user?.email
     const authEmail = {varifiEmail}
     const [allBooks,setAllbooks]=useState([])
-    // const [lode,setLode]=useState(true)
+    const [lode,setLode]=useState(true)
     const creatAxious = useAxios()
     useEffect(()=>{
         creatAxious.get(`/allbooks`)
         .then(res=>{
             setAllbooks(res.data)
-            // setLode(false)
+            setLode(false)
 
         })
 },[creatAxious])
-// if (lode) {
-//     return <Loder></Loder>
-// }
+if (lode) {
+    return <Loder></Loder>
+}
    const handelFiltering = ()=>{
         const quantityFiltering = allBooks?.filter(data=>data.quantity>0)
         setAllbooks(quantityFiltering)

@@ -36,7 +36,7 @@ export const myRoute = createBrowserRouter([
             },
             {
                 path:'/allbooks',
-                element:<All_Books></All_Books>,
+                element:<Private_Router> <All_Books></All_Books> </Private_Router> ,
                 
             },
             {
