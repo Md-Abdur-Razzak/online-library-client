@@ -2,9 +2,16 @@ import axios from 'axios';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import useAxios from '../useAxios/useAxios';
+import { useEffect } from 'react';
 
 const Add_Product = () => {
     // const {img,name,quantity,Aname,catagory,des,rating}=item
+    const creatAxious = useAxios()
+    useEffect(()=>{
+      creatAxious.get('/allbooks')
+      .then(res=>{})
+    },[])
     const handelAddData = (e) =>{
         e.preventDefault()
         const from = e.target
@@ -13,14 +20,15 @@ const Add_Product = () => {
         const Aname = from.pPrice.value
         const quantity = from.quantity.value
         const des = from.pDetails.value
+        const content = from.content.value
         const rating=from.Rating.value
         const img = from.pImg.value
-        const prodectsAllDetails = {name,catagory,Aname,des,rating,img,quantity}
+        const prodectsAllDetails = {content,name,catagory,Aname,des,rating,img,quantity}
       console.log(prodectsAllDetails);
       axios.post(`http://localhost:5000/allbooksAdd`,prodectsAllDetails)
       .then(res=>{
         if (res.data.insertedId) {
-            toast.success("Product Add Successfully")
+            toast.success("Book Add Successfully")
             from.reset()
             
           }
@@ -76,14 +84,22 @@ const Add_Product = () => {
        </label>
        <input type="text" placeholder="quantity" name='quantity' className="input input-bordered w-full" required />
      </div>
-     <div className="form-control w-full">
+    
+    </div>
+    <div className="form-control w-full">
        <label className="label">
          <span className="label-text">Details</span>
        </label>
        <input type="text" placeholder="Book Details" name='pDetails' className="input input-bordered w-full" required />
      
      </div>
-    </div>
+    <div className="form-control w-full">
+       <label className="label">
+         <span className="label-text">Book Content</span>
+       </label>
+       <input type="text" placeholder="Book Content" name='content' className="input input-bordered w-full" required />
+     
+     </div>
     <div className='md:flex justify-between md:gap-4'>
     
      <div className="form-control w-full">

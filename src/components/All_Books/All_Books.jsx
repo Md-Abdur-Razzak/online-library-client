@@ -40,7 +40,7 @@ if (lode) {
                 available quantity books
                 </button>
             </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-9">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-9">
             {
                 allBooks?.map(item=><AllBooks_cart key={item._id} item={item}></AllBooks_cart>)
             }

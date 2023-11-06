@@ -1,9 +1,10 @@
 import { Rating } from "@smastrom/react-rating";
 import { data } from "autoprefixer";
 import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { MyContext } from "../Router/AuthProvider";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Book_Details = () => {
     const singleData = useLoaderData()
@@ -11,6 +12,18 @@ const Book_Details = () => {
     const userName = user?.displayName || "";
     const email = user?.email
     const {img,name,quantity,Aname,catagory,des,rating,_id}=singleData || {}
+   
+    const handelBorrowBtn = ()=>{
+      axios.get(`http://localhost:5000/s?email=${email}&id=${_id}`)
+      .then(res=>{
+       if (res.data.id) {
+        toast.error("Alrady book borrowed ")
+       }else{
+          document.getElementById('my_modal_3').showModal()
+       }
+      })
+    
+    }
     const handelRetunBorrwBook = (e)=>{
        e.preventDefault()
      
@@ -20,6 +33,7 @@ const Book_Details = () => {
        const submiteData = {borrowDate,userName,email,returnDate,img,name,quantity,catagory,id:_id}
        axios.post(`http://localhost:5000/borrowBook`,submiteData)
        .then(res=>{
+        toast.success("Borrowed successfuly")
         document.getElementById('my_modal_3').close()
        })
      }
@@ -30,12 +44,14 @@ const Book_Details = () => {
             <div className='space-y-4'>
            <div className='flex gap-2 text-2xl md:mt-0 mt-9 text-white  font-bold items-center '>
             <h2 className="p-2 md:px-5 bg-green-500 rounded-full">{catagory}</h2>
-            <p className='p-2 md:px-5 bg-[hotpink] rounded-full'>{name}</p>
+           
            </div>
 
-            <h2 className="text-3xl font-bold">{name}</h2>
+            <h2 className="text-2xl font-bold">Name : {name}</h2>
+            <h2 className="text-xl font-bold">Auth : {Aname}</h2>
+
     
-            <h2 className="text-3xl font-bold">{quantity}</h2>
+            <h2 className="text-xl font-bold">quantity : {quantity}</h2>
            
             <div className='md:w-[400px] w-[95%] justify-center'>
             <p className='text-xl text-justify '>{des}</p>
@@ -46,8 +62,8 @@ const Book_Details = () => {
             <h1 className='text-3xl font-bold ml-2'>{rating}</h1>
           </div>
       
-        <button className='btn bg-green-500  text-white'>Read</button>
-        <button   onClick={()=>document.getElementById('my_modal_3').showModal()} disabled={quantity<=0?true:false} className='btn bg-blue-500 text-white ml-4 '>Borrow</button>
+       <Link to={`/read/${_id}`}> <button  className='btn bg-green-500  text-white'>Read</button> </Link>
+        <button   onClick={()=>handelBorrowBtn()} disabled={quantity<=0?true:false} className='btn bg-blue-500 text-white ml-4 '>Borrow</button>
             </div>
           </div>
           {/* model */}

@@ -8,16 +8,23 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const Borrowed_Books = () => {
-    const borrowBook = useLoaderData()
+
     const {user}=useContext(MyContext)
     const[bookStore,setBookStore]=useState([])
+    const[borrowBook,setBorradBook]=useState([])
   
   const [lode,setLode]=useState(true)
-
+useEffect(()=>{
+  axios.get(`http://localhost:5000/borroBooks`)
+  .then(res=>{
+      setBorradBook(res.data)
+      setLode(false)
+  })
+},[])
    useEffect(()=>{
     const filtarinData = borrowBook?.filter(book=>book.email == user?.email)
     setBookStore(filtarinData)
-    setLode(false)
+  
 
    },[user?.email,borrowBook])
      
@@ -37,7 +44,7 @@ const Borrowed_Books = () => {
     })
 }
     return (
-        <div  className="w-[60%] mx-auto mt-[100px]">
+        <div  className="md:w-[90%]  mx-auto mt-[100px]">
             <div>
               {
                 bookStore?.length==0&& <div className="flex justify-center mt-[50px]"><img className="w-[300px]" src="https://i.ibb.co/s6h9xQZ/7486754.png" alt=""  /></div>

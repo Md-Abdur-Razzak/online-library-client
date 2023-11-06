@@ -11,6 +11,7 @@ import Catagory_R_books from "../catagory_relativ_book/Catagory_R_books";
 import Book_Details from "../book_Details/Book_Details";
 import Update from "../update/Update";
 import PageNotFound from "../PageNot/PageNotFound";
+import Read_books from "../Read_book/Read_books";
 
 export const myRoute = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ export const myRoute = createBrowserRouter([
             {
                 path:'/bbooks',
                 element:<Private_Router><Borrowed_Books></Borrowed_Books></Private_Router> ,
-                loader:()=>fetch('http://localhost:5000/borroBooks')
+              
             },
             {
                 path:'/samebook/:catagory',
@@ -55,8 +56,13 @@ export const myRoute = createBrowserRouter([
             },
             {
                 path:'/details/:id',
-                element:<Book_Details></Book_Details>,
+                element:<Private_Router> <Book_Details></Book_Details> </Private_Router> ,
            
+                loader:({params})=>fetch(`http://localhost:5000/allbooks/${params.id}`)
+            },
+            {
+                path:'/read/:id',
+                element:<Read_books></Read_books>,
                 loader:({params})=>fetch(`http://localhost:5000/allbooks/${params.id}`)
             }
         ]

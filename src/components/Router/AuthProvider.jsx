@@ -32,17 +32,17 @@ const AuthProvider = ({children}) => {
     }
     useEffect (()=>{
             const unsubcribe= onAuthStateChanged(auth,(users)=>{
-                console.log('currentUser',users);
+               
                 const tokenEmail = users?.email || user?.email
                 const email = {tokenEmail}
               setCurrentUser(users)
               if (users) {
                 axios.post(`http://localhost:5000/jwt`,email,{withCredentials:true})
-                .then(res=>console.log(res.data))
+                .then(res=>console.log())
               }
              else{
                       axios.post(`http://localhost:5000/clearCoki`,email,{withCredentials:true})
-                 .then(res=>console.log(res.data))
+                 .then(res=>console.log())
              }
               setLoder(false)
             })
@@ -55,11 +55,7 @@ const AuthProvider = ({children}) => {
             return signOut(auth)
         }
         // --------------fatching Data cataogris--------------------
-        useEffect(()=>{
-           fetch('http://localhost:5000/catagory')
-            .then(res=>res.json())
-            .then(data=>setCataogris(data))
-        },[])
+      
 const passingData = {
     userserRegistraton,
     singWithEmailAndPassword,
@@ -68,7 +64,7 @@ const passingData = {
     logOut,
     googleAthntocation,
     githubAthntocation,
-    cataogris
+   
 }
     return (
        <MyContext.Provider value={passingData}>
