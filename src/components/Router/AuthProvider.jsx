@@ -31,15 +31,25 @@ const AuthProvider = ({children}) => {
                 return signInWithPopup(auth,provider)
     }
     useEffect (()=>{
-            const unsubcribe= onAuthStateChanged(auth,(user)=>{
-                console.log('currentUser',user);
-              setCurrentUser(user)
+            const unsubcribe= onAuthStateChanged(auth,(users)=>{
+                console.log('currentUser',users);
+                const tokenEmail = users?.email || user?.email
+                const email = {tokenEmail}
+              setCurrentUser(users)
+              if (users) {
+                axios.post(`http://localhost:5000/jwt`,email,{withCredentials:true})
+                .then(res=>console.log(res.data))
+              }
+             else{
+                      axios.post(`http://localhost:5000/clearCoki`,email,{withCredentials:true})
+                 .then(res=>console.log(res.data))
+             }
               setLoder(false)
             })
             return ()=>{
                 unsubcribe ()
             }
-        },[])
+        },[user?.email])
     
         const logOut = ()=>{
             return signOut(auth)

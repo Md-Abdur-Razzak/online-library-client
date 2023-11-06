@@ -1,25 +1,31 @@
 
 import AllBooks_cart from "./AllBooks_cart";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Loder from "../Loder/Loder";
+import { MyContext } from "../Router/AuthProvider";
+import useAxios from "../useAxios/useAxios";
+
 
 
 const All_Books = () => {
- 
+    const {user}=useContext(MyContext)
+    const varifiEmail = user?.email
+    const authEmail = {varifiEmail}
     const [allBooks,setAllbooks]=useState([])
-    const [lode,setLode]=useState(true)
+    // const [lode,setLode]=useState(true)
+    const creatAxious = useAxios()
     useEffect(()=>{
-        axios.get(`http://localhost:5000/allbooks`)
+        creatAxious.get(`/allbooks`)
         .then(res=>{
             setAllbooks(res.data)
-            setLode(false)
+            // setLode(false)
 
         })
-},[])
-if (lode) {
-    return <Loder></Loder>
-}
+},[creatAxious])
+// if (lode) {
+//     return <Loder></Loder>
+// }
    const handelFiltering = ()=>{
         const quantityFiltering = allBooks?.filter(data=>data.quantity>0)
         setAllbooks(quantityFiltering)

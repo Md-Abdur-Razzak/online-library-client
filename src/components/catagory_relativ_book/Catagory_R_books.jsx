@@ -11,7 +11,7 @@ const Catagory_R_books = () => {
     const [separateBooks,setSeparateBooks]=useState([])
     const [lode,setLode]=useState(true)
     useEffect(()=>{
-        axios.get('http://localhost:5000/allbooks')
+        axios.get('http://localhost:5000/allbooks',{withCredentials:true})
         .then(res=>{
             setRelativeBooks(res.data)
             setLode(false)
