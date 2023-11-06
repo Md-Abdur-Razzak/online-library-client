@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { MyContext } from "../Router/AuthProvider";
-import Borrowed_cart from "./Borrowed_cart";
+
 import axios from "axios";
 import Loder from "../Loder/Loder"
 import { toast } from "react-toastify";
@@ -43,10 +43,68 @@ const Borrowed_Books = () => {
                 bookStore?.length==0&& <div className="flex justify-center mt-[50px]"><img className="w-[300px]" src="https://i.ibb.co/s6h9xQZ/7486754.png" alt=""  /></div>
               }
             </div>
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {
-                    bookStore.map(item=><Borrowed_cart key={item._id} item={item} handelReturn={handelReturn}></Borrowed_cart>)
+   
+           <div>
+           <div className="overflow-x-auto">
+  <table className="table">
+    {/* head */}
+    <thead>
+      {
+        bookStore?.length==0?"":
+        <tr>
+  
+        <th>book img</th>
+        <th>Name</th>
+        <th>Categories</th>
+        <th>Borrowed Date</th>
+        <th>Return Date</th>
+        <th>Return Book</th>
+      </tr>
+      }
+    </thead>
+    <tbody>
+      {/*  const {img,name,catagory,borrowDate,returnDate,_id,id}=item */}
+                {bookStore.length==0?"":
+                  bookStore?.map(d=>{
+                    return(
+                      <tr key={d._id}>
+                    
+                      <td>
+                        <div className="flex items-center space-x-3">
+                          <div className="avatar">
+                            <div className="mask mask-squircle w-12 h-12">
+                              <img src={d.img} alt="Avatar Tailwind CSS Component" />
+                            </div>
+                          </div>
+                        
+                        </div>
+                      </td>
+                      <td>
+                       {d.name}
+                       
+                      </td>
+                      <td>{d.catagory}</td>
+                      <th>
+                        <td>{d.borrowDate}</td>
+                      </th>
+                      <th>
+                        <td>{d.returnDate}</td>
+                      </th>
+                      <th>
+                        <td onClick={()=>handelReturn(d._id , d.id)} className="btn bg-green-400 text-white">Return Book</td>
+                      </th>
+                    </tr>
+                    )
+                  })
                 }
+     
+     
+    </tbody>
+    {/* foot */}
+ 
+    
+  </table>
+</div>
            </div>
         </div>
     );

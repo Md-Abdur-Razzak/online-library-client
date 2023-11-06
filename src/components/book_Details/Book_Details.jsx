@@ -29,8 +29,8 @@ const Book_Details = () => {
             <div><img className='h-[350px] md:w-[500px] rounded-md w-[100%]' src={img} alt="" /></div>
             <div className='space-y-4'>
            <div className='flex gap-2 text-2xl md:mt-0 mt-9 text-white  font-bold items-center '>
-            <h2 className="p-2 md:px-5 bg-[#0d0d3f] rounded-full">{catagory}</h2>
-            <p className='p-2 md:px-5 bg-[hotpink] rounded-full'>{Aname}</p>
+            <h2 className="p-2 md:px-5 bg-green-500 rounded-full">{catagory}</h2>
+            <p className='p-2 md:px-5 bg-[hotpink] rounded-full'>{name}</p>
            </div>
 
             <h2 className="text-3xl font-bold">{name}</h2>
@@ -46,8 +46,8 @@ const Book_Details = () => {
             <h1 className='text-3xl font-bold ml-2'>{rating}</h1>
           </div>
       
-        <button className='btn bg-blue-500 text-white'>Read</button>
-        <button  onClick={()=>document.getElementById('my_modal_3').showModal()} disabled={quantity<=0?true:false} className='btn bg-blue-500 text-white '>Borrow</button>
+        <button className='btn bg-green-500  text-white'>Read</button>
+        <button   onClick={()=>document.getElementById('my_modal_3').showModal()} disabled={quantity<=0?true:false} className='btn bg-blue-500 text-white ml-4 '>Borrow</button>
             </div>
           </div>
           {/* model */}

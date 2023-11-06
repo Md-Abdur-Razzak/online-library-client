@@ -27,7 +27,7 @@ if(lode){
 }
     return (
         <div className="w-[80%] mx-auto mt-[100px]">
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
                 {
                     separateBooks?.map(item=><Catagory_R_details key={item._id} item={item}></Catagory_R_details>)
                 }
