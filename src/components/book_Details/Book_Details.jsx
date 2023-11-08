@@ -1,10 +1,11 @@
 import { Rating } from "@smastrom/react-rating";
-import { data } from "autoprefixer";
-import { useContext, useState } from "react";
+
+import { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { MyContext } from "../Router/AuthProvider";
 import axios from "axios";
 import { toast } from "react-toastify";
+import Footer from "../Footer/Fotter"
 
 const Book_Details = () => {
     const singleData = useLoaderData()
@@ -14,7 +15,7 @@ const Book_Details = () => {
     const {img,name,quantity,Aname,catagory,des,rating,_id}=singleData || {}
    
     const handelBorrowBtn = ()=>{
-      axios.get(`http://localhost:5000/s?email=${email}&id=${_id}`)
+      axios.get(`https://libary-mang-server.vercel.app/s?email=${email}&id=${_id}`)
       .then(res=>{
        if (res.data.id) {
         toast.error("Alrady book borrowed ")
@@ -31,14 +32,14 @@ const Book_Details = () => {
        
        const returnDate = e.target.datevalue.value
        const submiteData = {borrowDate,userName,email,returnDate,img,name,quantity,catagory,id:_id}
-       axios.post(`http://localhost:5000/borrowBook`,submiteData)
+       axios.post(`https://libary-mang-server.vercel.app/borrowBook`,submiteData)
        .then(res=>{
         toast.success("Borrowed successfuly")
         document.getElementById('my_modal_3').close()
        })
      }
     return (
-        <div className='mt-[100px]'>
+        <div className='mt-[100px] dark:text-white'>
           <div className='lg:w-[90%] md:w-[90%] w-[99%] md:p-0 p-9  mx-auto justify-evenly  md:flex md:gap-20'>
             <div><img className='h-[350px] md:w-[500px] rounded-md w-[100%]' src={img} alt="" /></div>
             <div className='space-y-4'>
@@ -88,6 +89,7 @@ const Book_Details = () => {
             </form>
             </div>
             </dialog>
+            <Footer></Footer>
         </div>
     );
 };

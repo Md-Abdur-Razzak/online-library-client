@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Update = () => {
     const updateBook = useLoaderData()
-  const {img,name,quantity,Aname,catagory,des,rating,_id}=updateBook
+  const {img,name,quantity,Aname,catagory,des,rating,_id,content}=updateBook
     console.log(updateBook);
     const handelUpdate = (e) =>{
         e.preventDefault()
@@ -13,13 +13,14 @@ const Update = () => {
         const name = from.pName.value
         const catagory = from.BrandName.value
         const Aname = from.pPrice.value
-        // const quantity = from.quantity.value
-        // const des = from.pDetails.value
+        const quantity = from.quantity.value
+        const des = from.pDetails.value
+        const content = from.content.value
         const rating=from.Rating.value
         const img = from.pImg.value
-        const prodectsAllDetails = {name,catagory,Aname,des,rating,img,quantity}
+        const prodectsAllDetails = {content,des,name,catagory,Aname,rating,img,quantity}
    
-      axios.post(`http://localhost:5000/bookUpdate/${_id}`,prodectsAllDetails)
+      axios.post(`https://libary-mang-server.vercel.app/bookUpdate/${_id}`,prodectsAllDetails)
       .then(res=>{
             if (res.data.modifiedCount>0) {
               
@@ -39,7 +40,7 @@ const Update = () => {
          <div className="hero min-h-screen bg-base-200 dark:bg-black">
 <div className="hero-content w-[50%] max-[769px]:w-[90%] flex-col ">
  <div className="text-center ">
-   <h1 className="text-5xl font-bold">Update Book </h1>
+   <h1 className="text-5xl font-bold dark:text-white">Update Book </h1>
    
  </div>
  <div className="card flex-shrink-0 w-full  shadow-2xl bg-base-100">
@@ -47,7 +48,7 @@ const Update = () => {
     <div className='md:flex justify-between md:gap-4'>
     <div className="form-control w-full">
        <label className="label">
-         <span className="label-text">Book Name</span>
+         <span className="label-text ">Book Name</span>
        </label>
        <input type="text" placeholder="Book Name" name='pName' defaultValue={name} className="input input-bordered  " required />
      </div>
@@ -73,20 +74,28 @@ const Update = () => {
        </label>
        <input type="text" placeholder="Auth Name" defaultValue={Aname} name='pPrice' className="input input-bordered w-full" required />
      </div>
-    {/* <div className="form-control w-full">
+     <div className="form-control w-full">
        <label className="label">
          <span className="label-text">Book quantity</span>
        </label>
        <input type="text" placeholder="quantity" name='quantity' defaultValue={quantity} className="input input-bordered w-full" required />
-     </div> */}
-     {/* <div className="form-control w-full">
+     </div>
+    
+    </div>
+    <div className="form-control w-full">
        <label className="label">
          <span className="label-text">Details</span>
        </label>
-       <input type="text" placeholder="Book Details" name='pDetails' defaultValue={des} className="input input-bordered w-full" required />
+       <input type="text" placeholder="Book Details" defaultValue={des} name='pDetails' className="input input-bordered w-full" required />
      
-     </div> */}
-    </div>
+     </div>
+     <div className="form-control w-full">
+       <label className="label">
+         <span className="label-text">Book Content</span>
+       </label>
+       <input type="text" placeholder="Book Content" defaultValue={content} name='content' className="input input-bordered w-full" required />
+     
+     </div>
     <div className='md:flex justify-between md:gap-4'>
     
      <div className="form-control w-full">
@@ -107,7 +116,7 @@ const Update = () => {
      </div>
      </div>
      <div className="form-control mt-6">
-       <button className="btn btn-primary">Update</button>
+       <button className="btn btn-primary ">Update Book</button>
      </div>
    </form>
  </div>

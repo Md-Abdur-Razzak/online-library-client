@@ -15,7 +15,7 @@ const Borrowed_Books = () => {
   
   const [lode,setLode]=useState(true)
 useEffect(()=>{
-  axios.get(`http://localhost:5000/borroBooks`)
+  axios.get(`https://libary-mang-server.vercel.app/borroBooks`)
   .then(res=>{
       setBorradBook(res.data)
       setLode(false)
@@ -33,8 +33,8 @@ useEffect(()=>{
    }
    const handelReturn = (id,deletId) =>{
         const data = {deletId}
-        console.log(data);
-    axios.post(`http://localhost:5000/return/${id}`,data)
+      
+    axios.post(`https://libary-mang-server.vercel.app/return/${id}`,data)
     .then(res=>{
      if (res.data.deletedCount>0) {
         const filter = bookStore?.filter(data=>data._id !==id)
@@ -44,7 +44,7 @@ useEffect(()=>{
     })
 }
     return (
-        <div  className="md:w-[90%]  mx-auto mt-[100px]">
+        <div  className="md:w-[90%] h-[100vh]  mx-auto mt-[100px]">
             <div>
               {
                 bookStore?.length==0&& <div className="flex justify-center mt-[50px]"><img className="w-[300px]" src="https://i.ibb.co/s6h9xQZ/7486754.png" alt=""  /></div>
@@ -52,13 +52,13 @@ useEffect(()=>{
             </div>
    
            <div>
-           <div className="overflow-x-auto">
-  <table className="table">
+           <div className="overflow-x-auto ">
+  <table className="table border border-green-500  dark:text-white ">
     {/* head */}
-    <thead>
+    <thead >
       {
         bookStore?.length==0?"":
-        <tr>
+        <tr className="text-green-500 text-xl border border-green-500">
   
         <th>book img</th>
         <th>Name</th>
@@ -69,14 +69,14 @@ useEffect(()=>{
       </tr>
       }
     </thead>
-    <tbody>
+    <tbody >
       {/*  const {img,name,catagory,borrowDate,returnDate,_id,id}=item */}
                 {bookStore.length==0?"":
                   bookStore?.map(d=>{
                     return(
-                      <tr key={d._id}>
+                      <tr key={d._id} className="border-green-500">
                     
-                      <td>
+                      <td  className="text-center">
                         <div className="flex items-center space-x-3">
                           <div className="avatar">
                             <div className="mask mask-squircle w-12 h-12">

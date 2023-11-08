@@ -3,7 +3,9 @@
 const PageNotFound = () => {
     return (
         <div>
-            404
+            <div>
+                <img src="https://i.ibb.co/pbXkBVH/404.jpg" alt="" />
+           </div>
         </div>
     );
 };

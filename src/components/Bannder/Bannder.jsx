@@ -2,12 +2,12 @@ import banner from '../../assets/bannder-removebg-preview.png'
 
 const Bannder = () => {
     return (
-        <div className='banner bg-[#bfedde] mt-3 lg:h-[650px] '>
+        <div className='banner bg-[#bfedde] dark:bg-[#230350] mt-3 lg:h-[650px] '>
         <div className=''>
         <div className='lg:flex  md:justify-evenly lg:items-center  '>
              <div className=' lg:w-[40%] p-4  w-[90%] mx-auto mt-4'>
-                 <h1 className='font-extrabold md:text-6xl text-4xl py-7 lg:text-left text-center space-y-9'>Welcome to the <span className='text-blue-500'>online</span> <span  className='text-green-500'>Library </span></h1>
-                 <p className='text-justify text-2xl pb-12 py-6 font-bold'>
+                 <h1 className='font-extrabold md:text-6xl text-4xl py-7 lg:text-left dark:text-white text-center space-y-9'>Welcome to the <span className='text-blue-500'>online</span> <span  className='text-green-500'>Library </span></h1>
+                 <p className='text-justify dark:text-white text-2xl pb-12 py-6 font-bold'>
                     Master Your Library
                     Efficient Management, Boundless Knowledge
                     Elevate Your Library Experience

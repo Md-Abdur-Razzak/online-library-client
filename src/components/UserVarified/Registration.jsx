@@ -1,6 +1,6 @@
 import { updateProfile } from "firebase/auth";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MyContext } from "../Router/AuthProvider";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,15 +9,16 @@ import 'react-toastify/dist/ReactToastify.css';
 const Registration = () => {
     
 const {userserRegistraton}=useContext(MyContext)
-
+const navigate = useNavigate()
 
 const handelRegistration = (e) =>{
+
     e.preventDefault()
         const email = e.target.email.value
         const password = e.target.password.value
         const name = e.target.name.value
         const img = e.target.img.value
-        console.log(email,password);
+  
         
     if (! /^(?=.*[A-Z])(?=.*[\W_]).{6,}$/.test(password)){
         return toast.error("Password must be at least 6 characters long and contain at least one uppercase letter and one special character  ")
@@ -30,8 +31,10 @@ const handelRegistration = (e) =>{
         displayName:name,
         photoURL:img
       })
+    
+       navigate('/')
       
-   
+     
        return toast.success("congratulations!  Registration successful ")
       
   })
@@ -43,7 +46,7 @@ const handelRegistration = (e) =>{
         <>
         
            <div className="flex justify-center mt-14 ">
-             <h1 className="text-5xl font-bold">Registration</h1>
+             <h1 className="text-5xl font-bold dark:text-white">Registration</h1>
            
            </div>
          
@@ -59,13 +62,13 @@ const handelRegistration = (e) =>{
                  <label className="label">
                    <span className="label-text">Name</span>
                  </label>
-                 <input type="text" placeholder="Name" name='name'  className="input w-full input-bordered " />
+                 <input type="text" placeholder="Name" name='name' required className="input w-full input-bordered " />
                </div>
                <div className="form-control mt-3">
                  <label className="label">
                    <span className="label-text mt-3">PhotoURL</span>
                  </label>
-                 <input type="text" placeholder="PhotoURL" name='img' className="input w-full input-bordered " />
+                 <input type="text" placeholder="PhotoURL" name='img' required className="input w-full input-bordered " />
                </div>
                <div className="form-control mt-3">
                  <label className="label">

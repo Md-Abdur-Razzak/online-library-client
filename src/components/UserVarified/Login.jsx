@@ -39,7 +39,7 @@ const Login = () => {
           <div className="hero banner-section ">
         <div className="hero-content flex-col mt-20">
           <div className="text-center lg:text-left ">
-            <h1 className="text-5xl font-bold">Login now! </h1>
+            <h1 className="text-5xl font-bold dark:text-white">Login now! </h1>
           
           </div>
           <div className="card  border border-3 border-cyan-700 flex-shrink-0 md:w-full    shadow-2xl bg-base-100 mt-3">

@@ -6,16 +6,16 @@ import axios from 'axios';
 const Top_Popuer_Books = () => {
     const [books,setBooks]=useState([])
     useEffect(()=>{
-        axios.get("http://localhost:5000/topBook")
+        axios.get("https://libary-mang-server.vercel.app/topBook")
         .then(res=>setBooks(res.data))
     },[])
    
     return (
-        <div className='w-[80%] mx-auto mt-[120px]'>
+        <div className='w-[80%] mx-auto mt-[120px] dark:text-white'>
              
              <div className="flex justify-center">
                 <h1 className="md:text-4xl text-2xl font-extrabold ">Top Popular  
-                <span className="text-green-400">Books</span></h1>
+                <span className="text-green-400 ml-2">Books</span></h1>
               
             </div><hr className="mt-9 border-4 border-l-pink-400 border-r-pink-400 border-green-400"/>
 

@@ -1,17 +1,17 @@
 
 import AllBooks_cart from "./AllBooks_cart";
-import { useContext, useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from "react";
+
 import Loder from "../Loder/Loder";
-import { MyContext } from "../Router/AuthProvider";
+
 import useAxios from "../useAxios/useAxios";
+import Footer from "../Footer/Fotter"
 
 
 
 const All_Books = () => {
-    const {user}=useContext(MyContext)
-    const varifiEmail = user?.email
-    const authEmail = {varifiEmail}
+   
+ 
     const [allBooks,setAllbooks]=useState([])
     const [lode,setLode]=useState(true)
     const creatAxious = useAxios()
@@ -33,11 +33,13 @@ if (lode) {
    }
 
     return (
-        <div className="w-[80%] mx-auto mt-[100px]">
-            <div>
-                
+        <div>
+            <div className="w-[80%] dark:text-white mx-auto mt-[100px]">
+            <div className="flex items-center gap-4">
+               
                 <button onClick={handelFiltering} className="btn bg-green-400 text-white">
-                available quantity books
+                <i className="fa-solid fa-filter text-pink-500" ></i>
+                available  books
                 </button>
             </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-9">
@@ -45,6 +47,9 @@ if (lode) {
                 allBooks?.map(item=><AllBooks_cart key={item._id} item={item}></AllBooks_cart>)
             }
           </div>
+     
+        </div>
+        <Footer></Footer>
         </div>
     );
 };

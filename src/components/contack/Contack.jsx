@@ -2,7 +2,7 @@
 
 const Contack = () => {
     return (
-        <div className='w-full  p-12 bg-[#14114106] mt-9'>
+        <div className='w-full dark:text-white  p-12 bg-[#14114106] mt-9'>
             <h1 className='flex justify-center text-4xl font-extrabold pb-12'>Contact <span className='ml-3 text-green-500'>Us</span></h1>
            <div className='lg:w-[80%] mx-auto grid grid-cols-1 lg:grid-cols-3 md:mt-0 mt-9'>
                 <div className='mt-2 lg:block flex flex-wrap gap-3 justify-center'>
@@ -20,7 +20,7 @@ const Contack = () => {
                         <h1>razzak445444@gmail.com</h1>
                     </div>
                 </div>
-                <div className='lg:col-span-2 md:mt-0 mt-9'>
+                <div className='lg:col-span-2  md:mt-0 mt-9'>
                         <form >
                         <div className='md:block flex flex-col'>
                             <input placeholder='First Name' required className='border-2 rounded-md m-3 md:w-[45%] py-4 px-3 border-blue-300 ' type="text" />

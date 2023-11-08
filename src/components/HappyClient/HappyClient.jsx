@@ -21,7 +21,7 @@ const HappyClient = () => {
         {
           avatar: AVTR1,
           name: 'Nuna Ama McBrown',
-          review: 'Technology and Electronics People has good communication and work ethic. I would recommend his services to others and will continue to work with seller on expanding my website features. Thank you again.'
+          review: 'online Library People has good communication and work ethic. I would recommend his services to others and will continue to work with seller on expanding my website features. Thank you again.'
         
         },
         {
@@ -42,7 +42,7 @@ const HappyClient = () => {
       ]
     return (
         <section id='testimonials '>
-        <div className='flex justify-center md:text-5xl text-xl font-extrabold pb-14 mt-[100px]'>
+        <div className='flex dark:text-white justify-center md:text-5xl text-xl font-extrabold pb-14 mt-[100px]'>
             Our <span className='text-green-400 px-2'>Happy</span> Students
         </div>
   

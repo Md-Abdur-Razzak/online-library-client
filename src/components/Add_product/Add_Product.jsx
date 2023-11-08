@@ -2,16 +2,11 @@ import axios from 'axios';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import useAxios from '../useAxios/useAxios';
-import { useEffect } from 'react';
+
 
 const Add_Product = () => {
     // const {img,name,quantity,Aname,catagory,des,rating}=item
-    const creatAxious = useAxios()
-    useEffect(()=>{
-      creatAxious.get('/allbooks')
-      .then(res=>{})
-    },[])
+  
     const handelAddData = (e) =>{
         e.preventDefault()
         const from = e.target
@@ -25,7 +20,7 @@ const Add_Product = () => {
         const img = from.pImg.value
         const prodectsAllDetails = {content,name,catagory,Aname,des,rating,img,quantity}
       console.log(prodectsAllDetails);
-      axios.post(`http://localhost:5000/allbooksAdd`,prodectsAllDetails)
+      axios.post(`https://libary-mang-server.vercel.app/allbooksAdd`,prodectsAllDetails)
       .then(res=>{
         if (res.data.insertedId) {
             toast.success("Book Add Successfully")
@@ -39,9 +34,9 @@ const Add_Product = () => {
 
     return (
         <div>
-        <div className="form-control">
+        <div className="form-control dark:text-white">
        
-         <div className="hero min-h-screen bg-base-200 dark:bg-black">
+         <div className="hero min-h-screen bg-base-200 dark:bg-[#1d1d4e]">
 <div className="hero-content w-[50%] max-[769px]:w-[90%] flex-col ">
  <div className="text-center ">
    <h1 className="text-5xl font-bold">Book add </h1>
@@ -52,7 +47,7 @@ const Add_Product = () => {
     <div className='md:flex justify-between md:gap-4'>
     <div className="form-control w-full">
        <label className="label">
-         <span className="label-text">Product Name</span>
+         <span className="label-text">Book Name</span>
        </label>
        <input type="text" placeholder="Book Name" name='pName' className="input input-bordered  " required />
      </div>
@@ -60,7 +55,7 @@ const Add_Product = () => {
        <label className="label">
          <span className="label-text">Category Name</span>
        </label>
-       <select  className="select select-primary w-full max-w-xs " name='BrandName' required>
+       <select  className="select select-primary w-full max-w-xs dark:text-black" name='BrandName' required>
            <option disabled selected>Category Name </option>
            <option>Sports</option>
            <option>Kinds</option>
