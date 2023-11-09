@@ -20,7 +20,7 @@ const Update = () => {
         const img = from.pImg.value
         const prodectsAllDetails = {content,des,name,catagory,Aname,rating,img,quantity}
    
-      axios.post(`https://libary-mang-server.vercel.app/bookUpdate/${_id}`,prodectsAllDetails)
+      axios.post(`https://libary-mang-server-side.vercel.app/bookUpdate/${_id}`,prodectsAllDetails)
       .then(res=>{
             if (res.data.modifiedCount>0) {
               

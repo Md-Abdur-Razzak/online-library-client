@@ -15,7 +15,7 @@ const Borrowed_Books = () => {
   
   const [lode,setLode]=useState(true)
 useEffect(()=>{
-  axios.get(`https://libary-mang-server.vercel.app/borroBooks`)
+  axios.get(`https://libary-mang-server-side.vercel.app/borroBooks`)
   .then(res=>{
       setBorradBook(res.data)
       setLode(false)
@@ -34,7 +34,7 @@ useEffect(()=>{
    const handelReturn = (id,deletId) =>{
         const data = {deletId}
       
-    axios.post(`https://libary-mang-server.vercel.app/return/${id}`,data)
+    axios.post(`https://libary-mang-server-side.vercel.app/return/${id}`,data)
     .then(res=>{
      if (res.data.deletedCount>0) {
         const filter = bookStore?.filter(data=>data._id !==id)

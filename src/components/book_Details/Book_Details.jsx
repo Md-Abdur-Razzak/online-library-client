@@ -15,7 +15,7 @@ const Book_Details = () => {
     const {img,name,quantity,Aname,catagory,des,rating,_id}=singleData || {}
    
     const handelBorrowBtn = ()=>{
-      axios.get(`https://libary-mang-server.vercel.app/s?email=${email}&id=${_id}`)
+      axios.get(`https://libary-mang-server-side.vercel.app/s?email=${email}&id=${_id}`)
       .then(res=>{
        if (res.data.id) {
         toast.error("Alrady book borrowed ")
@@ -32,7 +32,7 @@ const Book_Details = () => {
        
        const returnDate = e.target.datevalue.value
        const submiteData = {borrowDate,userName,email,returnDate,img,name,quantity,catagory,id:_id}
-       axios.post(`https://libary-mang-server.vercel.app/borrowBook`,submiteData)
+       axios.post(`https://libary-mang-server-side.vercel.app/borrowBook`,submiteData)
        .then(res=>{
         toast.success("Borrowed successfuly")
         document.getElementById('my_modal_3').close()

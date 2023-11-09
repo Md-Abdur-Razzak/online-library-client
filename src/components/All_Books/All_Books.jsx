@@ -1,6 +1,6 @@
 
 import AllBooks_cart from "./AllBooks_cart";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import Loder from "../Loder/Loder";
 
@@ -9,8 +9,10 @@ import Footer from "../Footer/Fotter"
 
 
 
+
+
 const All_Books = () => {
-   
+ 
  
     const [allBooks,setAllbooks]=useState([])
     const [lode,setLode]=useState(true)
@@ -23,7 +25,7 @@ const All_Books = () => {
 
         })
 },[creatAxious])
-if (lode) {
+if (lode ) {
     return <Loder></Loder>
 }
    const handelFiltering = ()=>{

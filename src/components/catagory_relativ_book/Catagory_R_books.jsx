@@ -13,7 +13,7 @@ const Catagory_R_books = () => {
     const [findeone,setFindeOne]=useState(null)
     const [lode,setLode]=useState(true)
     useEffect(()=>{
-        axios.get('https://libary-mang-server.vercel.app/allbooks2')
+        axios.get('https://libary-mang-server-side.vercel.app/allbooks2')
         .then(res=>{
             setRelativeBooks(res.data)
           setLode(false)

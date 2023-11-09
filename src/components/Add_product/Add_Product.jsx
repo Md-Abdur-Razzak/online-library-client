@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useEffect } from 'react';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -6,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Add_Product = () => {
     // const {img,name,quantity,Aname,catagory,des,rating}=item
-  
+
     const handelAddData = (e) =>{
         e.preventDefault()
         const from = e.target
@@ -20,7 +21,7 @@ const Add_Product = () => {
         const img = from.pImg.value
         const prodectsAllDetails = {content,name,catagory,Aname,des,rating,img,quantity}
       console.log(prodectsAllDetails);
-      axios.post(`https://libary-mang-server.vercel.app/allbooksAdd`,prodectsAllDetails)
+      axios.post(`https://libary-mang-server-side.vercel.app/allbooksAdd`,prodectsAllDetails)
       .then(res=>{
         if (res.data.insertedId) {
             toast.success("Book Add Successfully")

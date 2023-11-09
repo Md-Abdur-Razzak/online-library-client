@@ -52,18 +52,18 @@ export const myRoute = createBrowserRouter([
             {
                 path:'/update/:id',
                 element:<Private_Router><Update></Update></Private_Router>   ,  
-                loader:({params})=>fetch(`https://libary-mang-server.vercel.app/allbooks/${params.id}`)
+                loader:({params})=>fetch(`https://libary-mang-server-side.vercel.app/allbooks/${params.id}`)
             },
             {
                 path:'/details/:id',
                 element:<Private_Router> <Book_Details></Book_Details> </Private_Router> ,
            
-                loader:({params})=>fetch(`https://libary-mang-server.vercel.app/allbooks/${params.id}`)
+                loader:({params})=>fetch(`https://libary-mang-server-side.vercel.app/allbooks/${params.id}`)
             },
             {
                 path:'/read/:id',
                 element:<Read_books></Read_books>,
-                loader:({params})=>fetch(`https://libary-mang-server.vercel.app/allbooks/${params.id}`)
+                loader:({params})=>fetch(`https://libary-mang-server-side.vercel.app/allbooks/${params.id}`)
             }
         ]
     }

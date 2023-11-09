@@ -8,7 +8,7 @@ const Book_catagoris = () => {
     const [catagory,setCataogris]=useState([])
     const [loder,setloder]=useState(true)
     useEffect(()=>{
-        fetch('https://libary-mang-server.vercel.app/catagory')
+        fetch('https://libary-mang-server-side.vercel.app/catagory')
          .then(res=>res.json())
          .then(data=>{
             setCataogris(data)
