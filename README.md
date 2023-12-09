@@ -6,7 +6,7 @@
     <li><a style="color: blue;" href="https://github.com/Md-Abdur-Razzak/online-library-server" class="blue-link">Server Link</a></li></li>
 </ul>
 
-<h1>Features of my projects h1>
+<h1>Features of my projects </h1>
 <ul>
     <li>You can easily browse books on our online library website based on your favorite category.</li>
     <li>You can also borrow your favorite books from our online library</li>
