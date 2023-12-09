@@ -15,18 +15,18 @@
     <li>Additionally, users can view and read the most popular books on this platform.</li>
 </ul>
 
+ <h1>Technology I used </h1
+                                 
 <ul>
      <li>React</li>
     <li>React Router Dom</li>
     <li>Tailwind CSS</li>
     <li>Daisyui</li>
     <li>React Icon</li>
-
     <li>Axios</li>
     <li>Firebase</li>
     <li>Aos Animation</li>
     <li>Swiper js</li>
-  
     <li>Node.js</li>
     <li>Express.js</li>
     <li>MongoDB</li>
